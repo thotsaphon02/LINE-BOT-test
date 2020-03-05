@@ -11,18 +11,21 @@
     //รับข้อความจากผู้ใช้
     $message = $arrayJson['events'][0]['message']['text'];
 #ตัวอย่าง Message Type "Text"
-    if($message == "สวัสดี"){
+    if($message == "สวัสดี" || $message == "hello" || $message == "test"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
+        $arrayPostData['messages'][0]['text'] = "ดีจ้าา :)";
+        $arrayPostData['messages'][1]['type'] = "sticker";
+        $arrayPostData['messages'][1]['packageId'] = "11537";
+        $arrayPostData['messages'][1]['stickerId'] = "52002738";
         replyMsg($arrayHeader,$arrayPostData);
     }
     #ตัวอย่าง Message Type "Sticker"
     else if($message == "ฝันดี"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "sticker";
-        $arrayPostData['messages'][0]['packageId'] = "2";
-        $arrayPostData['messages'][0]['stickerId'] = "46";
+        $arrayPostData['messages'][0]['packageId'] = "11537";
+        $arrayPostData['messages'][0]['stickerId'] = "52002743";
         replyMsg($arrayHeader,$arrayPostData);
     }
     #ตัวอย่าง Message Type "Image"
@@ -35,23 +38,23 @@
         replyMsg($arrayHeader,$arrayPostData);
     }
     #ตัวอย่าง Message Type "Location"
-    else if($message == "พิกัดสยามพารากอน"){
+    else if($message == "latlon"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "location";
-        $arrayPostData['messages'][0]['title'] = "สยามพารากอน";
-        $arrayPostData['messages'][0]['address'] =   "13.7465354,100.532752";
-        $arrayPostData['messages'][0]['latitude'] = "13.7465354";
-        $arrayPostData['messages'][0]['longitude'] = "100.532752";
+        $arrayPostData['messages'][0]['title'] = "พังงา";
+        $arrayPostData['messages'][0]['address'] =   "8.45091,98.52985";
+        $arrayPostData['messages'][0]['latitude'] = "8.45091";
+        $arrayPostData['messages'][0]['longitude'] = "98.52985";
         replyMsg($arrayHeader,$arrayPostData);
     }
     #ตัวอย่าง Message Type "Text + Sticker ใน 1 ครั้ง"
     else if($message == "ลาก่อน"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "อย่าทิ้งกันไป";
+        $arrayPostData['messages'][0]['text'] = "บายจ้าา";
         $arrayPostData['messages'][1]['type'] = "sticker";
-        $arrayPostData['messages'][1]['packageId'] = "1";
-        $arrayPostData['messages'][1]['stickerId'] = "131";
+        $arrayPostData['messages'][1]['packageId'] = "11537";
+        $arrayPostData['messages'][1]['stickerId'] = "52002736";
         replyMsg($arrayHeader,$arrayPostData);
     }
 function replyMsg($arrayHeader,$arrayPostData){
